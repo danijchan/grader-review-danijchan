@@ -26,10 +26,11 @@ then
     echo "error involving javac"
 fi
 
-java -cp ".;lib/hamcrest-core-1.3.jar;lib/junit-4.13.2.jar" org.junit.runner.JUnitCore TestListExamples > test-results.txt
+java -cp ".;lib/hamcrest-core-1.3.jar;lib/junit-4.13.2.jar" org.junit.runner.JUnitCore TestListExamples > TestResult.txt
 
-head -n 2 test-results.txt > results.txt
-tail -n 1 results.txt > bruh.txt
-PASSES = grep -c "." bruh.txt
-FAILS = grep -c "E" bruh.txt
-echo $FAILS/($PASSES + $FAILS)
+head -n 2 TestResult.txt > whatever.txt
+tail -n 1 whatever.txt > someFile.txt 
+PASS=`grep -c "." someFile.txt`
+FAIL=`grep -c "E" someFile.txt`
+TOTAL=$(($PASS + $FAIL))
+echo "Your grade: " $PASS / $TOTAL
